@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FaHeart, FaCartShopping } from "react-icons/fa6";
+import { FaHeart, FaCartShopping, FaSearch } from "react-icons/fa6";
 import { NavLink, useParams, useNavigate, useSearchParams } from "react-router-dom";
 import { useCartWishlist } from "../context/CartWishlistContext";
 import Uiux from "../assets/Homeimage/Uiux.png";
@@ -23,16 +23,28 @@ function Courses() {
   const { addToCart, addToWishlist, wishlist, removeFromWishlist } = useCartWishlist();
   const { category } = useParams();
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const selectedCategory = category ? decodeURIComponent(category) : "All Courses";
   const [searchTerm, setSearchTerm] = useState(searchParams.get("search") || "");
 
   useEffect(() => {
-    const urlSearchTerm = searchParams.get("search");
-    if (urlSearchTerm) {
-      setSearchTerm(urlSearchTerm);
-    }
+    const urlSearchTerm = searchParams.get("search") || "";
+    setSearchTerm(urlSearchTerm);
   }, [searchParams]);
+
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+
+    // Update URL parameter
+    if (value) {
+      setSearchParams({ ...Object.fromEntries(searchParams), search: value });
+    } else {
+      const newParams = Object.fromEntries(searchParams);
+      delete newParams.search;
+      setSearchParams(newParams);
+    }
+  };
 
   const courses = [
     { id: "uiux", title: "UI/UX Design", price: 10000, img: Uiux, category: "IT Courses", teacherImg: Nancy, teacherName: "Nancy White", duration: "2.5 Months", link: "/nancycourse" },
@@ -68,13 +80,16 @@ function Courses() {
 
       {/* Search Bar */}
       <div className="flex justify-center px-4 mb-6">
-        <input
-          type="text"
-          placeholder="Search courses or instructors..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="border-2 border-gray-300 p-2 rounded-lg w-96 outline-none focus:border-[#003372]"
-        />
+        <div className="relative w-96">
+          <input
+            type="text"
+            placeholder="Search courses or instructors..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+            className="border-2 border-gray-300 p-2 pl-10 rounded-lg w-full outline-none focus:border-[#003372] shadow-sm"
+          />
+          <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+        </div>
       </div>
 
       <div className="flex justify-around p-4">
@@ -110,51 +125,57 @@ function Courses() {
 
         {/* Courses Grid */}
         <div className="grid grid-cols-3 gap-20 mx-auto">
-          {filteredCourses.map((course) => (
-            <div key={course.id} className="bg-white w-[250px] rounded-xl shadow p-4">
-              <img src={course.img} className="w-full h-[140px] object-contain" />
-              <div className="flex justify-between mt-2">
-                <span className="bg-yellow-300 px-2 py-1 text-sm rounded-full">
-                  {course.price === 0 ? "Free" : `Rs. ${course.price.toLocaleString()}`}
-                </span>
-                <span className="text-xs text-gray-400">REVIEWS</span>
-              </div>
-              <h3 className={`font-semibold mt-4 ${(course.id === "brand" || course.id === "public") ? "leading-relaxed mb-3" : ""}`}>
-                {course.title} | {course.duration}
-              </h3>
-              <p className={`text-sm text-gray-500 flex items-center gap-2 ${(course.id === "brand" || course.id === "public") ? "mt-5 mb-2" : "mt-2"}`}>
-                <img src={course.teacherImg} alt="" className="rounded-full object-cover w-8 h-8" />
-                By {course.teacherName}
-              </p>
-              <div className="flex items-center justify-between mb-4">
-                {!(course.id === "brand" || course.id === "public") && (
+          {filteredCourses.length > 0 ? (
+            filteredCourses.map((course) => (
+              <div key={course.id} className="bg-white w-[250px] rounded-xl shadow p-4">
+                <img src={course.img} className="w-full h-[140px] object-contain" />
+                <div className="flex justify-between mt-2">
+                  <span className="bg-yellow-300 px-2 py-1 text-sm rounded-full">
+                    {course.price === 0 ? "Free" : `Rs. ${course.price.toLocaleString()}`}
+                  </span>
+                  <span className="text-xs text-gray-400">REVIEWS</span>
+                </div>
+                <h3 className={`font-semibold mt-4 ${(course.id === "brand" || course.id === "public") ? "leading-relaxed mb-3" : ""}`}>
+                  {course.title} | {course.duration}
+                </h3>
+                <p className={`text-sm text-gray-500 flex items-center gap-2 ${(course.id === "brand" || course.id === "public") ? "mt-5 mb-2" : "mt-2"}`}>
+                  <img src={course.teacherImg} alt="" className="rounded-full object-cover w-8 h-8" />
+                  By {course.teacherName}
+                </p>
+                <div className="flex items-center justify-between mb-4">
+                  {!(course.id === "brand" || course.id === "public") && (
+                    <button
+                      onClick={() => addToCart({ id: course.id, title: course.title, price: course.price, img: course.img })}
+                      className="bg-yellow-300 w-30 items-center mt-3 py-1.5 px-2 gap-2 rounded-xl flex"
+                    >
+                      <FaCartShopping className="text-[#003372] size-4" /> Add to cart
+                    </button>
+                  )}
                   <button
-                    onClick={() => addToCart({ id: course.id, title: course.title, price: course.price, img: course.img })}
-                    className="bg-yellow-300 w-30 items-center mt-3 py-1.5 px-2 gap-2 rounded-xl flex"
+                    onClick={() =>
+                      isWish(course.id)
+                        ? removeFromWishlist(course.id)
+                        : addToWishlist({ id: course.id, title: course.title, price: course.price })
+                    }
                   >
-                    <FaCartShopping className="text-[#003372] size-4" /> Add to cart
+                    <FaHeart
+                      className={`${isWish(course.id) ? "text-red-500" : "text-gray-400"} size-5 mt-2`}
+                    />
                   </button>
-                )}
-                <button
-                  onClick={() =>
-                    isWish(course.id)
-                      ? removeFromWishlist(course.id)
-                      : addToWishlist({ id: course.id, title: course.title, price: course.price })
-                  }
-                >
-                  <FaHeart
-                    className={`${isWish(course.id) ? "text-red-500" : "text-gray-400"} size-5 mt-2`}
-                  />
-                </button>
+                </div>
+                <hr />
+                <NavLink to={course.link}>
+                  <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2 ml-7 py-1 rounded">
+                    View Course
+                  </button>
+                </NavLink>
               </div>
-              <hr />
-              <NavLink to={course.link}>
-                <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2 ml-7 py-1 rounded">
-                  View Course
-                </button>
-              </NavLink>
+            ))
+          ) : (
+            <div className="col-span-3 text-center py-10">
+              <p className="text-gray-500 text-lg">No courses or instructors found matching "{searchTerm}"</p>
             </div>
-          ))}
+          )}
         </div>
       </div>
     </div>
