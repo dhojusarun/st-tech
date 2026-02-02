@@ -48,14 +48,14 @@ function Courses() {
 
   const courses = [
     { id: "uiux", title: "UI/UX Design", price: 10000, img: Uiux, category: "IT Courses", teacherImg: Nancy, teacherName: "Nancy White", duration: "2.5 Months", link: "/nancycourse" },
-    { id: "graphic", title: "Graphic Design", price: 10000, img: Graphics, category: "Designing Courses", teacherImg: Nancy, teacherName: "Nancy White", duration: "2.5 Months", link: "/nancygraphic" },
     { id: "datascience", title: "Data Science", price: 10000, img: Datascience, category: "IT Courses", teacherImg: Henry, teacherName: "Henry Smith", duration: "3 Months", link: "/henrydata" },
     { id: "mern", title: "Mern Stack Development", price: 10000, img: Mern, category: "IT Courses", teacherImg: Henry, teacherName: "Henry Smith", duration: "3 Months", link: "/henrymern" },
     { id: "web", title: "Web Development", price: 10000, img: Web, category: "IT Courses", teacherImg: Charlotte, teacherName: "Charlotte", duration: "2.5 Months", link: "/charweb" },
-    { id: "project", title: "Project Management", price: 10000, img: Project, category: "Business Courses", teacherImg: Jordan, teacherName: "Jordan", duration: "2.5 Months", link: "/jordanproject" },
+    { id: "graphic", title: "Graphic Design", price: 10000, img: Graphics, category: "Designing Courses", teacherImg: Nancy, teacherName: "Nancy White", duration: "2.5 Months", link: "/nancygraphic" },
     { id: "digital", title: "Digital Marketing", price: 10000, img: Digital, category: "Marketing Courses", teacherImg: Nancy, teacherName: "Nancy White", duration: "3 Months", link: "/nancydigital" },
-    { id: "business", title: "Business Analytics", price: 10000, img: Business, category: "Business Courses", teacherImg: Ethan, teacherName: "Ethan", duration: "3 Months", link: "/ethanbusiness" },
     { id: "brand", title: "Brand Management", price: 0, img: Brand, category: "Marketing Courses", teacherImg: Charlotte, teacherName: "Charlotte", duration: "1.5 Months", link: "/charbrand" },
+    { id: "project", title: "Project Management", price: 10000, img: Project, category: "Business Courses", teacherImg: Jordan, teacherName: "Jordan", duration: "2.5 Months", link: "/jordanproject" },
+    { id: "business", title: "Business Analytics", price: 10000, img: Business, category: "Business Courses", teacherImg: Ethan, teacherName: "Ethan", duration: "3 Months", link: "/ethanbusiness" },
     { id: "public", title: "Public Speaking & Presentation Skills", price: 0, img: Public, category: "Public Development Courses", teacherImg: Jordan, teacherName: "Jordan", duration: "1 Month", link: "/jordanpublic" },
     { id: "modeling", title: "3D Modeling and Animation", price: 10000, img: Modeling, category: "Creative Arts Courses", teacherImg: Ethan, teacherName: "Ethan", duration: "3 Months", link: "/ethan3d" },
   ];
@@ -135,21 +135,23 @@ function Courses() {
                   </span>
                   <span className="text-xs text-gray-400">REVIEWS</span>
                 </div>
-                <h3 className={`font-semibold mt-4 ${(course.id === "brand" || course.id === "public") ? "leading-relaxed mb-3" : ""}`}>
+                <h3 className="font-semibold mt-4">
                   {course.title} | {course.duration}
                 </h3>
-                <p className={`text-sm text-gray-500 flex items-center gap-2 ${(course.id === "brand" || course.id === "public") ? "mt-5 mb-2" : "mt-2"}`}>
+                <p className="text-sm text-gray-500 flex items-center gap-2 mt-2">
                   <img src={course.teacherImg} alt="" className="rounded-full object-cover w-8 h-8" />
                   By {course.teacherName}
                 </p>
-                <div className="flex items-center justify-between mb-4">
-                  {!(course.id === "brand" || course.id === "public") && (
+                <div className="flex items-center justify-between h-12 mb-4">
+                  {!(course.id === "brand" || course.id === "public") ? (
                     <button
                       onClick={() => addToCart({ id: course.id, title: course.title, price: course.price, img: course.img })}
                       className="bg-yellow-300 w-30 items-center mt-3 py-1.5 px-2 gap-2 rounded-xl flex"
                     >
                       <FaCartShopping className="text-[#003372] size-4" /> Add to cart
                     </button>
+                  ) : (
+                    <div className="w-30"></div> // Spacer to keep heart aligned
                   )}
                   <button
                     onClick={() =>

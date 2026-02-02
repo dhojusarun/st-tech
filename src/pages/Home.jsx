@@ -157,7 +157,7 @@ function Home() {
         <h2 className="text-2xl font-semibold mt-1">Explore Our Courses</h2>
 
         <div className="grid grid-cols-4 gap-8 max-w-[1200px] mx-auto mt-10">
-          {/* Card 1 */}
+          {/* Card 1: UI/UX */}
           <div className="bg-white rounded-xl w-[250px] shadow p-4">
             <img src={Uiux} className="w-full h-[140px] object-contain" />
             <div className="flex justify-between mt-2">
@@ -168,7 +168,7 @@ function Home() {
             </div>
             <h3 className="font-semibold mt-4">UI/UX Design | <br />  2.5 Months</h3>
             <p className="text-sm text-gray-500 flex mt-2 items-center gap-2"><img src={Nancy} alt="" className="rounded-full object-cover w-8 h-8" />By Nancy White</p>
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center justify-between mb-4 h-[38px]">
               <button
                 onClick={() => addToCart({ id: "uiux", title: "UI/UX Design", price: 10000, img: Uiux })}
                 className="bg-yellow-300 w-32 items-center mt-3 py-1.5 px-2 gap-2 rounded-xl flex text-sm"
@@ -178,42 +178,13 @@ function Home() {
             </div>
             <hr />
             <NavLink to="/nancycourse">
-              <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2  py-1  rounded">
+              <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2  py-1  rounded ml-7">
                 View Course
               </button>
             </NavLink>
           </div>
 
-          {/* Card 2 */}
-          <div className="bg-white w-[250px] rounded-xl shadow p-4">
-            <img src={Graphics} className="w-full h-[140px] object-contain" />
-            <div className="flex justify-between mt-2">
-              <span className="bg-yellow-300 px-2 py-1 text-sm rounded-full">
-                Rs. 10,000
-              </span>
-              <span className="text-xs text-gray-400">REVIEWS</span>
-            </div>
-            <h3 className="font-semibold mt-4">
-              Graphic Design |<br /> 2.5 Months
-            </h3>
-            <p className="text-sm text-gray-500 flex items-center gap-2 mt-2"><img src={Nancy} alt="" className="rounded-full object-cover     w-8 h-8" />By Nancy White</p>
-            <div className="flex items-center justify-between mb-4">
-              <button
-                onClick={() => addToCart({ id: "graphic", title: "Graphic Design", price: 10000, img: Graphics })}
-                className="bg-yellow-300 w-32 items-center mt-3 py-1.5 px-2 gap-2 rounded-xl flex text-sm"
-              >
-                <FaCartShopping className="text-[#003372] size-4" /> Add to cart
-              </button>
-            </div>
-            <hr />
-            <NavLink to="/nancygraphic">
-              <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2  py-1  rounded">
-                View Course
-              </button>
-            </NavLink>
-          </div>
-
-          {/* Card 3 */}
+          {/* Card 2: Data Science */}
           <div className="bg-white w-[250px] rounded-xl shadow p-4">
             <img src={Datascience} className="w-full h-[140px] object-contain" />
             <div className="flex justify-between mt-2">
@@ -226,7 +197,7 @@ function Home() {
               Data Science|<br /> 3 Months
             </h3>
             <p className="text-sm text-gray-500 flex items-center gap-2 mt-2"><img src={Henry} alt="" className="rounded-full object-cover     w-8 h-8" />By Henry Smith</p>
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center justify-between mb-4 h-[38px]">
               <button
                 onClick={() => addToCart({ id: "datascience", title: "Data Science", price: 10000, img: Datascience })}
                 className="bg-yellow-300 w-32 items-center mt-3 py-1.5 px-2 gap-2 rounded-xl flex text-sm"
@@ -236,13 +207,13 @@ function Home() {
             </div>
             <hr />
             <NavLink to="/henrydata">
-              <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2  py-1  rounded">
+              <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2  py-1  rounded ml-7">
                 View Course
               </button>
             </NavLink>
           </div>
 
-          {/* Card 4 */}
+          {/* Card 3: Mern Stack */}
           <div className="bg-white w-[250px] rounded-xl shadow p-4">
             <img src={Mern} className="w-full h-[140px] object-contain" />
             <div className="flex justify-between mt-2">
@@ -255,7 +226,7 @@ function Home() {
               Mern Stack Development |  <br /> 3 Months
             </h3>
             <p className="text-sm text-gray-500 flex items-center gap-2 mt-2"><img src={Henry} alt="" className="rounded-full object-cover     w-8 h-8" />By Henry Smith</p>
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center justify-between mb-4 h-[38px]">
               <button
                 onClick={() => addToCart({ id: "mern", title: "Mern Stack Development", price: 10000, img: Mern })}
                 className="bg-yellow-300 w-32 items-center mt-3 py-1.5 px-2 gap-2 rounded-xl flex text-sm"
@@ -265,13 +236,13 @@ function Home() {
             </div>
             <hr />
             <NavLink to="/henrymern">
-              <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2  py-1  rounded">
+              <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2  py-1  rounded ml-7">
                 View Course
               </button>
             </NavLink>
           </div>
 
-          {/* Card 5 */}
+          {/* Card 4: Web Development */}
           <div className="bg-white w-[250px] rounded-xl shadow p-4">
             <img src={Web} className="w-full h-[140px] object-contain" />
             <div className="flex justify-between mt-2">
@@ -284,7 +255,7 @@ function Home() {
               Web Development| 2.5 Months
             </h3>
             <p className="text-sm text-gray-500 flex items-center gap-2 mt-2"><img src={Charlotte} alt="" className="rounded-full object-cover     w-8 h-8" />By Charlotte</p>
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center justify-between mb-4 h-[38px]">
               <button
                 onClick={() => addToCart({ id: "web", title: "Web Development", price: 10000, img: Web })}
                 className="bg-yellow-300 w-32 items-center mt-3 py-1.5 px-2 gap-2 rounded-xl flex text-sm"
@@ -294,15 +265,15 @@ function Home() {
             </div>
             <hr />
             <NavLink to="/charweb">
-              <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2  py-1  rounded">
+              <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2  py-1  rounded ml-7">
                 View Course
               </button>
             </NavLink>
           </div>
 
-          {/* Card 6 */}
+          {/* Card 5: Graphic Design */}
           <div className="bg-white w-[250px] rounded-xl shadow p-4">
-            <img src={Project} className="w-full h-[140px] object-contain" />
+            <img src={Graphics} className="w-full h-[140px] object-contain" />
             <div className="flex justify-between mt-2">
               <span className="bg-yellow-300 px-2 py-1 text-sm rounded-full">
                 Rs. 10,000
@@ -310,26 +281,26 @@ function Home() {
               <span className="text-xs text-gray-400">REVIEWS</span>
             </div>
             <h3 className="font-semibold mt-4">
-              Project Management| 2.5 Months
+              Graphic Design |<br /> 2.5 Months
             </h3>
-            <p className="text-sm text-gray-500 flex items-center gap-2 mt-2"><img src={Jordan} alt="" className="rounded-full object-cover     w-8 h-8" />By Jordan</p>
-            <div className="flex items-center justify-between mb-4">
+            <p className="text-sm text-gray-500 flex items-center gap-2 mt-2"><img src={Nancy} alt="" className="rounded-full object-cover     w-8 h-8" />By Nancy White</p>
+            <div className="flex items-center justify-between mb-4 h-[38px]">
               <button
-                onClick={() => addToCart({ id: "project", title: "Project Management", price: 10000, img: Project })}
+                onClick={() => addToCart({ id: "graphic", title: "Graphic Design", price: 10000, img: Graphics })}
                 className="bg-yellow-300 w-32 items-center mt-3 py-1.5 px-2 gap-2 rounded-xl flex text-sm"
               >
                 <FaCartShopping className="text-[#003372] size-4" /> Add to cart
               </button>
             </div>
             <hr />
-            <NavLink to="/jordanproject">
-              <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2  py-1  rounded">
+            <NavLink to="/nancygraphic">
+              <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2  py-1  rounded ml-7">
                 View Course
               </button>
             </NavLink>
           </div>
 
-          {/* Card 7 */}
+          {/* Card 6: Digital Marketing */}
           <div className="bg-white w-[250px] rounded-xl shadow p-4">
             <img src={Digital} className="w-full h-[140px] object-contain" />
             <div className="flex justify-between mt-2">
@@ -343,7 +314,7 @@ function Home() {
               3 Months
             </h3>
             <p className="text-sm text-gray-500 flex items-center gap-2 mt-2"><img src={Nancy} alt="" className="rounded-full object-cover     w-8 h-8" />By Nancy White</p>
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center justify-between mb-4 h-[38px]">
               <button
                 onClick={() => addToCart({ id: "digital", title: "Digital Marketing", price: 10000, img: Digital })}
                 className="bg-yellow-300 w-32 items-center mt-3 py-1.5 px-2 gap-2 rounded-xl flex text-sm"
@@ -353,42 +324,13 @@ function Home() {
             </div>
             <hr />
             <NavLink to="/nancydigital">
-              <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2  py-1  rounded">
+              <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2  py-1  rounded ml-7">
                 View Course
               </button>
             </NavLink>
           </div>
 
-          {/* Card 8 */}
-          <div className="bg-white w-[250px] rounded-xl shadow p-4">
-            <img src={Business} className="w-full h-[140px] object-contain" />
-            <div className="flex justify-between mt-2">
-              <span className="bg-yellow-300 px-2 py-1 text-sm rounded-full">
-                Rs. 10,000
-              </span>
-              <span className="text-xs text-gray-400">REVIEWS</span>
-            </div>
-            <h3 className="font-semibold mt-4">
-              Business Analytics |<br /> 3 Months
-            </h3>
-            <p className="text-sm text-gray-500 flex items-center gap-2 mt-2"><img src={Ethan} alt="" className="rounded-full object-cover     w-8 h-8" />By Ethan </p>
-            <div className="flex items-center justify-between mb-4">
-              <button
-                onClick={() => addToCart({ id: "business", title: "Business Analytics", price: 10000, img: Business })}
-                className="bg-yellow-300 w-32 items-center mt-3 py-1.5 px-2 gap-2 rounded-xl flex text-sm"
-              >
-                <FaCartShopping className="text-[#003372] size-4" /> Add to cart
-              </button>
-            </div>
-            <hr />
-            <NavLink to="/ethanbusiness">
-              <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2  py-1  rounded">
-                View Course
-              </button>
-            </NavLink>
-          </div>
-
-          {/* Card 9 */}
+          {/* Card 7: Brand Management */}
           <div className="bg-white w-[250px] rounded-xl shadow p-4">
             <img src={Brand} className="w-full h-[140px] object-contain" />
             <div className="flex justify-between mt-2">
@@ -401,18 +343,75 @@ function Home() {
               Brand Management | 1.5 Months
             </h3>
             <p className="text-sm text-gray-500 flex items-center gap-2 mt-2"><img src={Charlotte} alt="" className="rounded-full object-cover     w-8 h-8" />By Charlotte</p>
-            <div className="flex items-center justify-between mb-4">
-
+            <div className="flex items-center justify-between mb-4 h-[38px]">
             </div>
-            <hr /><br />
+            <hr />
             <NavLink to="/charbrand">
-              <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2  py-1  rounded">
+              <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2  py-1  rounded ml-7">
                 View Course
               </button>
             </NavLink>
           </div>
 
-          {/* Card 10 */}
+          {/* Card 8: Project Management */}
+          <div className="bg-white w-[250px] rounded-xl shadow p-4">
+            <img src={Project} className="w-full h-[140px] object-contain" />
+            <div className="flex justify-between mt-2">
+              <span className="bg-yellow-300 px-2 py-1 text-sm rounded-full">
+                Rs. 10,000
+              </span>
+              <span className="text-xs text-gray-400">REVIEWS</span>
+            </div>
+            <h3 className="font-semibold mt-4">
+              Project Management| 2.5 Months
+            </h3>
+            <p className="text-sm text-gray-500 flex items-center gap-2 mt-2"><img src={Jordan} alt="" className="rounded-full object-cover     w-8 h-8" />By Jordan</p>
+            <div className="flex items-center justify-between mb-4 h-[38px]">
+              <button
+                onClick={() => addToCart({ id: "project", title: "Project Management", price: 10000, img: Project })}
+                className="bg-yellow-300 w-32 items-center mt-3 py-1.5 px-2 gap-2 rounded-xl flex text-sm"
+              >
+                <FaCartShopping className="text-[#003372] size-4" /> Add to cart
+              </button>
+            </div>
+            <hr />
+            <NavLink to="/jordanproject">
+              <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2  py-1  rounded ml-7">
+                View Course
+              </button>
+            </NavLink>
+          </div>
+
+          {/* Card 9: Business Analytics */}
+          <div className="bg-white w-[250px] rounded-xl shadow p-4">
+            <img src={Business} className="w-full h-[140px] object-contain" />
+            <div className="flex justify-between mt-2">
+              <span className="bg-yellow-300 px-2 py-1 text-sm rounded-full">
+                Rs. 10,000
+              </span>
+              <span className="text-xs text-gray-400">REVIEWS</span>
+            </div>
+            <h3 className="font-semibold mt-4">
+              Business Analytics |<br /> 3 Months
+            </h3>
+            <p className="text-sm text-gray-500 flex items-center gap-2 mt-2"><img src={Ethan} alt="" className="rounded-full object-cover     w-8 h-8" />By Ethan </p>
+            <div className="flex items-center justify-between mb-4 h-[38px]">
+              <button
+                onClick={() => addToCart({ id: "business", title: "Business Analytics", price: 10000, img: Business })}
+                className="bg-yellow-300 w-32 items-center mt-3 py-1.5 px-2 gap-2 rounded-xl flex text-sm"
+              >
+                <FaCartShopping className="text-[#003372] size-4" /> Add to cart
+              </button>
+            </div>
+            <hr />
+            <NavLink to="/ethanbusiness">
+              <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2  py-1  rounded ml-7">
+                View Course
+              </button>
+            </NavLink>
+          </div>
+
+          {/* Card 10: Public Speaking */}
           <div className="bg-white w-[250px] rounded-xl shadow p-4">
             <img src={Public} className="w-full  h-[140px] object-cover" />
             <div className="flex justify-between mt-2">
@@ -425,18 +424,17 @@ function Home() {
               Public Speaking & Presentation Skills | 1 Month
             </h3>
             <p className="text-sm text-gray-500 flex items-center gap-2 mt-2"><img src={Jordan} alt="" className="rounded-full object-cover w-8 h-8" />By Jordan</p>
-            <div className="flex items-center justify-between mb-4">
-
+            <div className="flex items-center justify-between mb-4 h-[38px]">
             </div>
             <hr />
             <NavLink to="/jordanpublic">
-              <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2  py-1  rounded">
+              <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2  py-1  rounded ml-7">
                 View Course
               </button>
             </NavLink>
           </div>
 
-          {/* Card 11 */}
+          {/* Card 11: 3D Modeling */}
           <div className="bg-white w-[250px] rounded-xl shadow p-4">
             <img src={Modeling} className="w-full h-[140px] object-contain" />
             <div className="flex justify-between mt-2">
@@ -449,7 +447,7 @@ function Home() {
               3D Modeling and Animation | 3 Months
             </h3>
             <p className="text-sm text-gray-500 flex items-center gap-2 mt-2"><img src={Ethan} alt="" className="rounded-full object-cover     w-8 h-8" />By Ethan</p>
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center justify-between mb-4 h-[38px]">
               <button
                 onClick={() => addToCart({ id: "modeling", title: "3D Modeling and Animation", price: 10000, img: Modeling })}
                 className="bg-yellow-300 w-32 items-center mt-3 py-1.5 px-2 gap-2 rounded-xl flex text-sm"
@@ -459,7 +457,7 @@ function Home() {
             </div>
             <hr />
             <NavLink to="/ethan3d">
-              <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2  py-1  rounded">
+              <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2  py-1  rounded ml-7">
                 View Course
               </button>
             </NavLink>
