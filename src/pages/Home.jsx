@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import Homelogo from "../assets/Homeimage/Homelogo.png";
 import Instructors from "../assets/Homeimage/Instructors.png";
-import Courses from "../assets/Homeimage/Courses.png";
+import Coursesimg from "../assets/Homeimage/Courses.png";
 import Certifications from "../assets/Homeimage/Certifications.png";
 import Students from "../assets/Homeimage/Students.png";
 import Elearning from "../assets/Homeimage/Elearning.png";
-import { FaBook } from "react-icons/fa6";
+import { FaBook, FaCartShopping } from "react-icons/fa6";
 import { IoNewspaper } from "react-icons/io5";
 import { HiOutlineLightBulb } from "react-icons/hi";
 import { RiVerifiedBadgeLine } from "react-icons/ri";
@@ -36,8 +36,10 @@ import Jameswhite from "../assets/Homeimage/Jameswhite.png";
 import Nancysmith from "../assets/Homeimage/Nancysmith.png";
 import Stars from "../assets/Homeimage/Stars.png";
 import { NavLink } from "react-router-dom";
+import { useCartWishlist } from "../context/CartWishlistContext";
 
 function Home() {
+  const { addToCart } = useCartWishlist();
   const testimonials = [
   {
     name: "James Smith",
@@ -87,7 +89,7 @@ function Home() {
 
       {/* home2 */}
       <div className="flex justify-around border">
-        {[Instructors, Courses, Certifications, Students].map((img, i) => (
+        {[Instructors, Coursesimg, Certifications, Students].map((img, i) => (
           <div
             key={i}
             className="flex items-center text-bold text-xl
@@ -166,7 +168,14 @@ function Home() {
                 </div>
                 <h3 className="font-semibold mt-4">UI/UX Design | <br />  2.5 Months</h3>
                 <p className="text-sm text-gray-500 flex mt-2 items-center gap-2"><img src={Nancy} alt="" className="rounded-full object-cover w-8 h-8" />By Nancy White</p>
-                <br />
+                <div className="flex items-center justify-between mb-4">
+                  <button
+                    onClick={() => addToCart({ id: "uiux", title: "UI/UX Design", price: 10000, img: Uiux })}
+                    className="bg-yellow-300 w-32 items-center mt-3 py-1.5 px-2 gap-2 rounded-xl flex text-sm"
+                  >
+                    <FaCartShopping className="text-[#003372] size-4" /> Add to cart
+                  </button>
+                </div>
                 <hr />
                  <NavLink to="/nancycourse">
                 <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2  py-1  rounded">      
@@ -188,7 +197,14 @@ function Home() {
                   Graphic Design |<br /> 2.5 Months
                 </h3>
                 <p className="text-sm text-gray-500 flex items-center gap-2 mt-2"><img src={Nancy} alt="" className="rounded-full object-cover     w-8 h-8" />By Nancy White</p>
-                <br />
+                <div className="flex items-center justify-between mb-4">
+                  <button
+                    onClick={() => addToCart({ id: "graphic", title: "Graphic Design", price: 10000, img: Graphics })}
+                    className="bg-yellow-300 w-32 items-center mt-3 py-1.5 px-2 gap-2 rounded-xl flex text-sm"
+                  >
+                    <FaCartShopping className="text-[#003372] size-4" /> Add to cart
+                  </button>
+                </div>
                 <hr />
                 <NavLink to="/nancygraphic">
                 <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2  py-1  rounded">      
@@ -210,7 +226,14 @@ function Home() {
                   Data Science|<br /> 3 Months
                 </h3>
                 <p className="text-sm text-gray-500 flex items-center gap-2 mt-2"><img src={Henry} alt="" className="rounded-full object-cover     w-8 h-8" />By Henry Smith</p>
-                <br />
+                <div className="flex items-center justify-between mb-4">
+                  <button
+                    onClick={() => addToCart({ id: "datascience", title: "Data Science", price: 10000, img: Datascience })}
+                    className="bg-yellow-300 w-32 items-center mt-3 py-1.5 px-2 gap-2 rounded-xl flex text-sm"
+                  >
+                    <FaCartShopping className="text-[#003372] size-4" /> Add to cart
+                  </button>
+                </div>
                 <hr />
                <NavLink to="/henrydata">
                 <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2  py-1  rounded">      
@@ -232,7 +255,14 @@ function Home() {
                   Mern Stack Development |  <br /> 3 Months
                 </h3>
                 <p className="text-sm text-gray-500 flex items-center gap-2 mt-2"><img src={Henry} alt="" className="rounded-full object-cover     w-8 h-8" />By Henry Smith</p>
-                <br />
+                <div className="flex items-center justify-between mb-4">
+                  <button
+                    onClick={() => addToCart({ id: "mern", title: "Mern Stack Development", price: 10000, img: Mern })}
+                    className="bg-yellow-300 w-32 items-center mt-3 py-1.5 px-2 gap-2 rounded-xl flex text-sm"
+                  >
+                    <FaCartShopping className="text-[#003372] size-4" /> Add to cart
+                  </button>
+                </div>
                 <hr />
                 <NavLink to="/henrymern">
                 <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2  py-1  rounded">      
@@ -254,7 +284,14 @@ function Home() {
                   Web Development| 2.5 Months
                 </h3>
                 <p className="text-sm text-gray-500 flex items-center gap-2 mt-2"><img src={Charlotte} alt="" className="rounded-full object-cover     w-8 h-8" />By Charlotte</p>
-                <br />
+                <div className="flex items-center justify-between mb-4">
+                  <button
+                    onClick={() => addToCart({ id: "web", title: "Web Development", price: 10000, img: Web })}
+                    className="bg-yellow-300 w-32 items-center mt-3 py-1.5 px-2 gap-2 rounded-xl flex text-sm"
+                  >
+                    <FaCartShopping className="text-[#003372] size-4" /> Add to cart
+                  </button>
+                </div>
                 <hr />
                 <NavLink to="/charweb">
                 <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2  py-1  rounded">      
@@ -276,7 +313,14 @@ function Home() {
                  Project Management| 2.5 Months
                 </h3>
                 <p className="text-sm text-gray-500 flex items-center gap-2 mt-2"><img src={Jordan} alt="" className="rounded-full object-cover     w-8 h-8" />By Jordan</p>
-                <br />
+                <div className="flex items-center justify-between mb-4">
+                  <button
+                    onClick={() => addToCart({ id: "project", title: "Project Management", price: 10000, img: Project })}
+                    className="bg-yellow-300 w-32 items-center mt-3 py-1.5 px-2 gap-2 rounded-xl flex text-sm"
+                  >
+                    <FaCartShopping className="text-[#003372] size-4" /> Add to cart
+                  </button>
+                </div>
                 <hr />
                 <NavLink to="/jordanproject">
                 <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2  py-1  rounded">      
@@ -299,7 +343,14 @@ function Home() {
                    3 Months
                 </h3>
                 <p className="text-sm text-gray-500 flex items-center gap-2 mt-2"><img src={Nancy} alt="" className="rounded-full object-cover     w-8 h-8" />By Nancy White</p>
-                <br />
+                <div className="flex items-center justify-between mb-4">
+                  <button
+                    onClick={() => addToCart({ id: "digital", title: "Digital Marketing", price: 10000, img: Digital })}
+                    className="bg-yellow-300 w-32 items-center mt-3 py-1.5 px-2 gap-2 rounded-xl flex text-sm"
+                  >
+                    <FaCartShopping className="text-[#003372] size-4" /> Add to cart
+                  </button>
+                </div>
                 <hr />
                 <NavLink to="/nancydigital">
                 <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2  py-1  rounded">      
@@ -321,7 +372,14 @@ function Home() {
                   Business Analytics |<br /> 3 Months
                 </h3>
                 <p className="text-sm text-gray-500 flex items-center gap-2 mt-2"><img src={Ethan} alt="" className="rounded-full object-cover     w-8 h-8" />By Ethan </p>
-                <br />
+                <div className="flex items-center justify-between mb-4">
+                  <button
+                    onClick={() => addToCart({ id: "business", title: "Business Analytics", price: 10000, img: Business })}
+                    className="bg-yellow-300 w-32 items-center mt-3 py-1.5 px-2 gap-2 rounded-xl flex text-sm"
+                  >
+                    <FaCartShopping className="text-[#003372] size-4" /> Add to cart
+                  </button>
+                </div>
                 <hr />
                 <NavLink to="/ethanbusiness">
                 <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2  py-1  rounded">      
@@ -335,7 +393,7 @@ function Home() {
                 <img src={Brand} className="w-full h-[140px] object-contain" />
                 <div className="flex justify-between mt-2">
                   <span className="bg-yellow-300 px-2 py-1 text-sm rounded-full">
-                    Rs. 10,000
+                    Free
                   </span>
                   <span className="text-xs text-gray-400">REVIEWS</span>
                 </div>
@@ -343,7 +401,15 @@ function Home() {
                   Brand Management | 1.5 Months
                 </h3>
                 <p className="text-sm text-gray-500 flex items-center gap-2 mt-2"><img src={Charlotte} alt="" className="rounded-full object-cover     w-8 h-8" />By Charlotte</p>
-                <br /><hr />
+                <div className="flex items-center justify-between mb-4">
+                  <button
+                    onClick={() => addToCart({ id: "brand", title: "Brand Management", price: 0, img: Brand })}
+                    className="bg-yellow-300 w-32 items-center mt-3 py-1.5 px-2 gap-2 rounded-xl flex text-sm"
+                  >
+                    <FaCartShopping className="text-[#003372] size-4" /> Add to cart
+                  </button>
+                </div>
+                <hr /><br />
                 <NavLink to="/charbrand">
                 <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2  py-1  rounded">      
                        View Course
@@ -356,14 +422,22 @@ function Home() {
                 <img src={Public} className="w-full  h-[140px] object-cover" />
                 <div className="flex justify-between mt-2">
                   <span className="bg-yellow-300 px-2 py-1 text-sm rounded-full">
-                    Rs. 10,000
+                    Free
                   </span>
                   <span className="text-xs text-gray-400">REVIEWS</span>
                 </div>
                 <h3 className="font-semibold mt-4">
                  Public Speaking & Presentation Skills | 1 Month
                 </h3>
-                <p className="text-sm text-gray-500 flex items-center gap-2 mt-2"><img src={Jordan} alt="" className="rounded-full object-cover w-8 h-8" />By Jordan</p> <br />
+                <p className="text-sm text-gray-500 flex items-center gap-2 mt-2"><img src={Jordan} alt="" className="rounded-full object-cover w-8 h-8" />By Jordan</p> 
+                <div className="flex items-center justify-between mb-4">
+                  <button
+                    onClick={() => addToCart({ id: "public", title: "Public Speaking & Presentation Skills", price: 0, img: Public })}
+                    className="bg-yellow-300 w-32 items-center mt-3 py-1.5 px-2 gap-2 rounded-xl flex text-sm"
+                  >
+                    <FaCartShopping className="text-[#003372] size-4" /> Add to cart
+                  </button>
+                </div>
                 <hr />
                 <NavLink to="/jordanpublic">
                 <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2  py-1  rounded">      
@@ -385,7 +459,14 @@ function Home() {
                   3D Modeling and Animation | 3 Months
                 </h3>
                 <p className="text-sm text-gray-500 flex items-center gap-2 mt-2"><img src={Ethan} alt="" className="rounded-full object-cover     w-8 h-8" />By Ethan</p>
-                <br />
+                <div className="flex items-center justify-between mb-4">
+                  <button
+                    onClick={() => addToCart({ id: "modeling", title: "3D Modeling and Animation", price: 10000, img: Modeling })}
+                    className="bg-yellow-300 w-32 items-center mt-3 py-1.5 px-2 gap-2 rounded-xl flex text-sm"
+                  >
+                    <FaCartShopping className="text-[#003372] size-4" /> Add to cart
+                  </button>
+                </div>
                 <hr />
                 <NavLink to="/ethan3d">
                 <button className="border-2 border-[#003372] text-[#003372] text-medium w-40 mt-2  py-1  rounded">      

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaHeart, FaCartShopping } from "react-icons/fa6";
-import { NavLink ,useParams,useNavigate, useSearchParams } from "react-router-dom";
+import { NavLink, useParams, useNavigate, useSearchParams } from "react-router-dom";
 import { useCartWishlist } from "../context/CartWishlistContext";
 import Uiux from "../assets/Homeimage/Uiux.png";
 import Nancy from "../assets/Homeimage/Nancy.png";
@@ -50,22 +50,22 @@ function Courses() {
 
   const filteredCourses =
     selectedCategory === "All Courses"
-      ? courses.filter(course => 
-          course.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
-          course.teacherName.toLowerCase().includes(searchTerm.toLowerCase())
-        )
-      : courses.filter((course) => 
-          (course.category === selectedCategory || (selectedCategory === "Free Courses" && course.price === 0)) &&
-          (course.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
-           course.teacherName.toLowerCase().includes(searchTerm.toLowerCase()))
-        );
+      ? courses.filter(course =>
+        course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        course.teacherName.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+      : courses.filter((course) =>
+        (course.category === selectedCategory || (selectedCategory === "Free Courses" && course.price === 0)) &&
+        (course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          course.teacherName.toLowerCase().includes(searchTerm.toLowerCase()))
+      );
 
   const isWish = (id) => wishlist.some((i) => i.id === id);
 
   return (
     <div className="bg-gray-200">
       <h2 className="font-medium text-black p-6 ml-25 text-2xl">Our Courses</h2>
-      
+
       {/* Search Bar */}
       <div className="flex justify-center px-4 mb-6">
         <input
@@ -94,14 +94,14 @@ function Courses() {
             ].map((cat) => (
               <li key={cat} className="flex gap-1 text-sm text-gray-800 mb-2">
                 <input
-                type="radio"
-                checked={selectedCategory === cat}
-                onChange={() =>
-                  cat === "All Courses"
-                    ? navigate("/courses")
-                    : navigate(`/courses/${encodeURIComponent(cat)}`)
-                }
-              />
+                  type="radio"
+                  checked={selectedCategory === cat}
+                  onChange={() =>
+                    cat === "All Courses"
+                      ? navigate("/courses")
+                      : navigate(`/courses/${encodeURIComponent(cat)}`)
+                  }
+                />
                 {cat}
               </li>
             ))}
@@ -125,14 +125,12 @@ function Courses() {
                 By {course.teacherName}
               </p>
               <div className="flex items-center justify-between mb-4">
-                {course.price > 0 && (
-                  <button
-                    onClick={() => addToCart({ id: course.id, title: course.title, price: course.price, img: course.img })}
-                    className="bg-yellow-300 w-30 items-center mt-3 py-1.5 px-2 gap-2 rounded-xl flex"
-                  >
-                    <FaCartShopping className="text-[#003372] size-4" /> Add to cart
-                  </button>
-                )}
+                <button
+                  onClick={() => addToCart({ id: course.id, title: course.title, price: course.price, img: course.img })}
+                  className="bg-yellow-300 w-30 items-center mt-3 py-1.5 px-2 gap-2 rounded-xl flex"
+                >
+                  <FaCartShopping className="text-[#003372] size-4" /> Add to cart
+                </button>
                 <button
                   onClick={() =>
                     isWish(course.id)

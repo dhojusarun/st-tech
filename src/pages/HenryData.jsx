@@ -15,7 +15,7 @@ import { GrCertificate } from "react-icons/gr";
 import { PiYoutubeLogoDuotone } from "react-icons/pi";
 import { IoMdLock } from "react-icons/io";
 import { IoChevronDown } from "react-icons/io5";
-import { FaFacebook, FaInstagram, FaLinkedin ,} from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaLinkedin, } from "react-icons/fa";
 import { TbBrandGmail } from "react-icons/tb";
 import { FaBook } from "react-icons/fa";
 import { PiStudent } from "react-icons/pi";
@@ -23,7 +23,7 @@ import { FaRegStar } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { NavLink } from "react-router-dom";
 function HenryData() {
-   const handleShare = async () => {
+  const handleShare = async () => {
     const url = window.location.href;
 
     if (navigator.share) {
@@ -62,13 +62,13 @@ function HenryData() {
               </div>
 
               <p className="text-lg">
-                Hey I am Henry smith. I am a Datascience professional 
+                Hey I am Henry smith. I am a Datascience professional
                 and instructor dedicated to helping you
                 master design principles and create impactful real-life
                 experiences.
               </p>
 
-              <div className="flex items-center gap-2"> 
+              <div className="flex items-center gap-2">
                 <img src={Stars} alt="" />
                 <p>(10 Reviews)</p>
               </div>
@@ -87,7 +87,7 @@ function HenryData() {
           {/* COURSE INFO */}
           <div className="lg:col-span-2 space-y-4 ">
             <h2 className="text-xl font-semibold border-b p-2 border-gray-400">Course Info</h2>
-          
+
 
             <h3 className="text-lg font-semibold text-center">
               About the course
@@ -189,7 +189,7 @@ function HenryData() {
               ))}
             </div>
           </div>
-          
+
 
           {/* PRICE CARD */}
           <div className="bg-white shadow-lg relative -mt-25 rounded-xl p-4 h-fit">
@@ -200,8 +200,10 @@ function HenryData() {
             <div className="flex justify-between items-center">
               <p className="text-[#003372] text-2xl font-bold">Rs. 10,000</p>
               <div className="flex gap-3">
-                <FaHeart className="text-red-500 text-lg" />
-                 <RiShareForwardLine
+                <button onClick={() => (isWish('henrydata') ? removeFromWishlist('henrydata') : addToWishlist({ id: 'henrydata', title: 'Data Science', price: 10000 }))}>
+                  <FaHeart className={`${isWish('henrydata') ? 'text-red-500' : 'text-gray-400'} text-lg`} />
+                </button>
+                <RiShareForwardLine
                   className="text-gray-500 text-lg cursor-pointer hover:text-[#003372]"
                   onClick={handleShare}
                 />
@@ -209,7 +211,7 @@ function HenryData() {
             </div>
 
             <div className=" mt-4">
-              <button className="flex items-center gap-2 bg-[#003372] text-white px-4 py-2 rounded-xl w-full justify-center">
+              <button onClick={() => addToCart({ id: 'henrydata', title: 'Data Science', price: 10000 })} className="flex items-center gap-2 bg-[#003372] text-white px-4 py-2 rounded-xl w-full justify-center">
                 <FaCartShopping /> Add to cart
               </button>
             </div>
@@ -228,78 +230,78 @@ function HenryData() {
             <p className="text-gray-600 text-sm p-4 text-justify leading-6">
               To participate in the Data Science, Participants should have an interest in working with data, technology, and real-world problem-solving. Basic knowledge of mathematics, statistics, or programming concepts is helpful but not compulsory. Logical thinking, curiosity, and patience are essential, as data science involves experimentation and analysis. Regular practice using a computer is required, along with a willingness to learn new programming tools and techniques.
             </p>
-          </div> 
+          </div>
 
           <div className=" relative left-124 -top-82 p-4 border-t h-fit space-y-2">
-            <h1 className="font-medium">Share this course with a friend</h1> 
-            <div className="flex gap-3 text-[#003372]">  
-             <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-               <FaFacebook size={25} />
-             </a>
-             <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
-               <FaInstagram size={25} className="rounded-full bg-[#003372] text-white p-0.5"/>
-             </a>
-             <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
-               <FaLinkedin size={25}/>
-             </a>
-             <a href="https://www.gmail.com" target="_blank" rel="noopener noreferrer">
-               <TbBrandGmail size={25} className="rounded-full bg-[#003372] text-white p-0.5"/>
-             </a>
-           </div>
+            <h1 className="font-medium">Share this course with a friend</h1>
+            <div className="flex gap-3 text-[#003372]">
+              <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+                <FaFacebook size={25} />
+              </a>
+              <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+                <FaInstagram size={25} className="rounded-full bg-[#003372] text-white p-0.5" />
+              </a>
+              <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+                <FaLinkedin size={25} />
+              </a>
+              <a href="https://www.gmail.com" target="_blank" rel="noopener noreferrer">
+                <TbBrandGmail size={25} className="rounded-full bg-[#003372] text-white p-0.5" />
+              </a>
+            </div>
           </div>
-        </div>  
-         {/* INSTRUCTOR SECTION  */}
-<div className="-mt-80 px-6">
-  <h2 className="text-2xl font-medium text-center mb-6">Instructor</h2>
-
-  <div className="flex justify-between items-center gap-6">
-    {/* Instructor Card */}
-    <div className="flex items-center gap-4 bg-white shadow rounded-xl p-4 w-full max-w-xl">
-      <img
-        src={Henry}
-        alt="Instructor"
-        className="w-16 h-16 rounded-full object-cover"
-      />
-
-      <div className="space-y-1 flex gap-15 items-center">
-        <div>
-<h3 className="font-semibold text-2xl">Henry Smith</h3>
-        <p className="text-xl text-gray-500">Data Science</p>
         </div>
-        
+        {/* INSTRUCTOR SECTION  */}
+        <div className="-mt-80 px-6">
+          <h2 className="text-2xl font-medium text-center mb-6">Instructor</h2>
 
-        <div className="text-xl text-gray-600 mt-2">
-          <span className="flex items-center gap-2"><FaBook /> 2 Courses</span>
-          <span className="flex items-center gap-2"><PiStudent /> 25 Students</span>
-          <span className="flex items-center gap-2"><FaRegStar /> 5 Reviews</span>
+          <div className="flex justify-between items-center gap-6">
+            {/* Instructor Card */}
+            <div className="flex items-center gap-4 bg-white shadow rounded-xl p-4 w-full max-w-xl">
+              <img
+                src={Henry}
+                alt="Instructor"
+                className="w-16 h-16 rounded-full object-cover"
+              />
+
+              <div className="space-y-1 flex gap-15 items-center">
+                <div>
+                  <h3 className="font-semibold text-2xl">Henry Smith</h3>
+                  <p className="text-xl text-gray-500">Data Science</p>
+                </div>
+
+
+                <div className="text-xl text-gray-600 mt-2">
+                  <span className="flex items-center gap-2"><FaBook /> 2 Courses</span>
+                  <span className="flex items-center gap-2"><PiStudent /> 25 Students</span>
+                  <span className="flex items-center gap-2"><FaRegStar /> 5 Reviews</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Other Courses */}
+            <div className="w-full md:w-1/3 text-xl">
+              <h4 className="font-semibold mb-2">Other Courses from this instructor</h4>
+              <ul className="text-[#003372] space-y-1">
+                <li><NavLink to="/henrymern">• Mern Stack</NavLink></li>
+              </ul>
+            </div>
+          </div>
+        </div> <br />
+        <hr />
+        {/* REVIEWS SECTION  */}
+        <div className="mt-6 px-6 pb-10">
+          <h2 className="text-2xl font-bold text-center mb-6">Reviews</h2>
+          <div className="flex flex-col items-center justify-center text-gray-400">
+            <img
+              src={review}
+              alt="No reviews"
+            />
+            <p className="mt-4 text-xl">No reviews yet</p>
+          </div>
         </div>
-      </div>
-    </div>
-
-    {/* Other Courses */}
-    <div className="w-full md:w-1/3 text-xl">
-      <h4 className="font-semibold mb-2">Other Courses from this instructor</h4>
-      <ul className="text-[#003372] space-y-1">
-        <li><NavLink to="/henrymern">• Mern Stack</NavLink></li>
-      </ul>
-    </div>
-  </div>
-</div> <br />
-<hr />
- {/* REVIEWS SECTION  */}
-<div className="mt-6 px-6 pb-10">
-  <h2 className="text-2xl font-bold text-center mb-6">Reviews</h2>
-  <div className="flex flex-col items-center justify-center text-gray-400">
-    <img
-      src={review}
-      alt="No reviews"
-    />
-    <p className="mt-4 text-xl">No reviews yet</p>
-  </div>
-</div>
 
       </div>
-      
+
     </div>
   );
 }
